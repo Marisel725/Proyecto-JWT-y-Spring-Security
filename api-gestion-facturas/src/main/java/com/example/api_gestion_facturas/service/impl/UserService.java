@@ -27,7 +27,7 @@ public class UserService implements IUserService {
                 User user = userRepository.findByEmail(requestMap.get("email"));
                 if (Objects.isNull(user)){
                     userRepository.save(getUserFromMap(requestMap));
-                    return FacturaUtils.getResponseEntity("Usuario registardo exitosamente", HttpStatus.CREATED);
+                    return FacturaUtils.getResponseEntity("Usuario registrado exitosamente", HttpStatus.CREATED);
                 }
                 else {
                     return FacturaUtils.getResponseEntity("El usuario ya existe en la BDD", HttpStatus.BAD_REQUEST);
@@ -53,8 +53,8 @@ public class UserService implements IUserService {
         user.setNumeroDeContacto(requestMap.get("numeroDeContacto"));
         user.setEmail(requestMap.get("email"));
         user.setPassword(requestMap.get("password"));
-        user.setStatus(requestMap.get("false"));
-        user.setRole(requestMap.get("user"));
+        user.setStatus("false");
+        user.setRole("user");
         return user;
     }
 }
